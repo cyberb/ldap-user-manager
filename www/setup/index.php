@@ -13,10 +13,10 @@ if (isset($_POST["admin_password"])) {
 
  if ($user_auth != FALSE) {
   set_setup_cookie($user_auth);
-  header("Location: /{$THIS_MODULE_PATH}/run_checks.php\n\n");
+  header("Location: {$THIS_MODULE_PATH}/run_checks.php\n\n");
  }
  else {
-  header("Location: /{$THIS_MODULE_PATH}/index.php?invalid\n\n");
+  header("Location: {$THIS_MODULE_PATH}/index.php?invalid\n\n");
  }
 
 }

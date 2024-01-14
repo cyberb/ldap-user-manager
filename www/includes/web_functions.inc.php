@@ -238,7 +238,7 @@ function log_out($method='normal') {
  @ unlink("/tmp/$filename");
 
  if ($method == 'auto') { $options = "?logged_out"; } else { $options = ""; }
- header("Location:  /{$SERVER_PATH}index.php$options\n\n");
+ header("Location: {$SERVER_PATH}index.php$options\n\n");
 
 }
 
@@ -369,7 +369,7 @@ function set_page_access($level) {
    return;
   }
   else {
-   header("Location: /" . "{$SERVER_PATH}setup/index.php?unauthorised\n\n");
+   header("Location: " . "{$SERVER_PATH}setup/index.php?unauthorised\n\n");
    if ( $SESSION_DEBUG == TRUE) {  error_log("$log_prefix Session: UNAUTHORISED: page security level is 'setup' but IS_SETUP_ADMIN isn't TRUE",0); }
    exit(0);
   }
@@ -382,7 +382,7 @@ function set_page_access($level) {
    return;
   }
   else {
-   header("Location: /" . "{$SERVER_PATH}log_in/index.php?$reason&redirect_to=" . base64_encode($_SERVER['REQUEST_URI']) . "\n\n");
+   header("Location: " . "{$SERVER_PATH}log_in/index.php?$reason&redirect_to=" . base64_encode($_SERVER['REQUEST_URI']) . "\n\n");
    if ( $SESSION_DEBUG == TRUE) {  error_log("$log_prefix Session: no access to page ($reason): page security level is 'admin' but IS_ADMIN = '{$IS_ADMIN}' and VALIDATED = '{$VALIDATED}' (user) ",0); }
    exit(0);
   }
@@ -393,7 +393,7 @@ function set_page_access($level) {
    return;
   }
   else {
-   header("Location: /" . "{$SERVER_PATH}log_in/index.php?$reason&redirect_to=" . base64_encode($_SERVER['REQUEST_URI']) . "\n\n");
+   header("Location: " . "{$SERVER_PATH}log_in/index.php?$reason&redirect_to=" . base64_encode($_SERVER['REQUEST_URI']) . "\n\n");
    if ( $SESSION_DEBUG == TRUE) {  error_log("$log_prefix Session: no access to page ($reason): page security level is 'user' but VALIDATED = '{$VALIDATED}'",0); }
    exit(0);
   }
@@ -679,7 +679,7 @@ function render_attribute_fields($attribute,$label,$values_r,$resource_identifie
                  $description="Download $mimetype file (" . human_readable_filesize(strlen($values_r[0])) . ")";
                  $button_text="Replace file";
                  if ($resource_identifier != "") {
-                   $this_url="//{$_SERVER['HTTP_HOST']}{$THIS_MODULE_PATH}/download.php?resource_identifier={$resource_identifier}&attribute={$attribute}";
+                   $this_url="{$_SERVER['HTTP_HOST']}{$THIS_MODULE_PATH}/download.php?resource_identifier={$resource_identifier}&attribute={$attribute}";
                    $file_button_action="onclick=\"window.open('$this_url','_blank');\"";
                  }
                }
